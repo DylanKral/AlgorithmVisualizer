@@ -1,0 +1,14 @@
+nav{
+    margin: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: rgb(99, 99, 99);
+}

@@ -4,3 +4,7 @@
     background-color: black;
     display: inline-block;
 }
+
+.data-container{
+    margin: 0;
+}

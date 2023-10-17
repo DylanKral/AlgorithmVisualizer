@@ -4,7 +4,7 @@ import './VisualizerDisplay.css'
 
 function VisualizerDisplay({data}) {
     return(
-        <div>
+        <div className="data-container">
             {data.map((value,idx) => (
                 <div key= {idx}
                 className="bar"
