@@ -5,7 +5,8 @@ import VisualizerDisplay from "./VisualizerDisplay";
 import { useArrayData } from "../context/ArrayDataContext";
 
 function VisualizerContainer() {
-    const { data } = useArrayData()
+    const contextValue = useArrayData()
+    const { data } = contextValue
     
     
     return (

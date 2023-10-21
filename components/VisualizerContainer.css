@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: last baseline;
     overflow: hidden;
-    
+    white-space: nowrap;
+    max-width: 95vw;
 }
 

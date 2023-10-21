@@ -1,5 +1,4 @@
 .bar{
-    width: 5px;
     margin: 2px;
     background-color: black;
     display: inline-block;
@@ -7,4 +6,8 @@
 
 .data-container{
     margin: 0;
+}
+
+.bar.examined{
+    background-color: red;
 }

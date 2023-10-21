@@ -5,10 +5,12 @@ import './VisualizerDisplay.css'
 function VisualizerDisplay({data}) {
     return(
         <div className="data-container">
-            {data.map((value,idx) => (
+            {data.map((item,idx) => (
                 <div key= {idx}
-                className="bar"
-                style={{height: `${value}px`}}>
+                className={`bar ${item.isExamined ? 'examined' : ''}`}
+                style={{height: `${item.value}px`}
+                
+                }>
                 </div>
             ))}
         </div>

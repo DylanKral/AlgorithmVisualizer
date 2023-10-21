@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext } from "react";
+import * as algorithms from '../algorithms/Algorithms'
 
 const ArrayDataContext = createContext();
 
@@ -7,10 +8,21 @@ export function useArrayData() {
 }
 
 export function ArrayDataProvider({ children }) {
-    const [arrayLength, setArrayLength] = useState(10);
+    const [arrayLength, setArrayLength] = useState(50);
+    const [selectedAlgorithm, setSelectedAlgorithm] = useState(null)
+
+    function executeAlgorithm(){
+        if(!selectedAlgorithm){
+            return
+        }
+
+        const sortedData = algorithms[selectedAlgorithm](data, setData)
+    }
 
     function generateArray(length) {
-        return Array.from({length}, () => Math.floor(Math.random() * 250));
+        
+        return Array.from({length}, () =>({value:Math.floor((Math.random() * 250)+5),
+                                            isExamined: false }));
     }
 
     const [data, setData] = useState(generateArray(arrayLength));
@@ -22,7 +34,7 @@ export function ArrayDataProvider({ children }) {
     }
 
     return (
-        <ArrayDataContext.Provider value={{ data, arrayLength, sliderHandler }}>
+        <ArrayDataContext.Provider value={{ data, arrayLength, sliderHandler, executeAlgorithm, setSelectedAlgorithm }}>
             {children}
         </ArrayDataContext.Provider>
     );
