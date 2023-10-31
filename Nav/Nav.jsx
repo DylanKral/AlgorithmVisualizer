@@ -6,9 +6,10 @@ import "./Nav.css"
 
 function Nav() {
     const { data, arrayLength, sliderHandler, setSelectedAlgorithm, executeAlgorithm} = useArrayData()
-
+    
     
     function algorithmChangeHandler(e){
+        console.log("here")
         setSelectedAlgorithm(e.target.value)
         console.log(e.target.value)
     }
@@ -17,10 +18,11 @@ function Nav() {
     <div className="nav-container">
         <nav>
             <select name="AlgorithmMenu" id="dropdown" onChange={algorithmChangeHandler}>
+                <option value="selectionSort">Selection Sort</option> 
                 <option value="binarySort">Binary Sort</option>
                 <option value="insertionSort">Insertion Sort</option>
                 <option value="bubbleSort">Bubble Sort</option> 
-                <option value="selectionSort">Selection Sort</option> 
+                
             </select>
             <label>Set the number of elements for the array
                 <input 

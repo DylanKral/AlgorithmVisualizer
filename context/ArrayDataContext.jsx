@@ -9,10 +9,12 @@ export function useArrayData() {
 
 export function ArrayDataProvider({ children }) {
     const [arrayLength, setArrayLength] = useState(50);
-    const [selectedAlgorithm, setSelectedAlgorithm] = useState(null)
+    const [selectedAlgorithm, setSelectedAlgorithm] = useState('selectionSort')
 
     function executeAlgorithm(){
+        
         if(!selectedAlgorithm){
+            console.log("Not executing, Nothing selected")
             return
         }
 
@@ -20,7 +22,7 @@ export function ArrayDataProvider({ children }) {
     }
 
     function generateArray(length) {
-        
+
         return Array.from({length}, () =>({value:Math.floor((Math.random() * 250)+5),
                                             isExamined: false }));
     }

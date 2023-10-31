@@ -1,13 +1,14 @@
 .bar{
-    margin: 2px;
+    margin: 1px;
     background-color: black;
     display: inline-block;
+    width: 3px;
 }
 
 .data-container{
     margin: 0;
 }
 
-.bar.examined{
+.examined{
     background-color: red;
 }

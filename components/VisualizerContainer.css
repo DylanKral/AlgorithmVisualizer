@@ -8,5 +8,6 @@
     overflow: hidden;
     white-space: nowrap;
     max-width: 95vw;
+    padding: 0 5px;
 }
 
