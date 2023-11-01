@@ -9,7 +9,7 @@ function Nav() {
     
     
     function algorithmChangeHandler(e){
-        console.log("here")
+        
         setSelectedAlgorithm(e.target.value)
         console.log(e.target.value)
     }
