@@ -29,7 +29,15 @@ export async function bubbleSort(arr, setData){
       setData([...sortedArray])
      
     } 
+
+    
   }
+  for (let i = 0; i < sortedArray.length; i++){
+      sortedArray[i].isExamined = false
+
+      await new Promise((resolve) => setTimeout(resolve, 25))
+      setData([...sortedArray])
+    }
   return sortedArray
 }
 
