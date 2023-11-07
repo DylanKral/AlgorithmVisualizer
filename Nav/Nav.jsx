@@ -5,7 +5,14 @@ import * as algorithms from '../algorithms/Algorithms'
 import "./Nav.css"
 
 function Nav() {
-    const { data, arrayLength, sliderHandler, setSelectedAlgorithm, executeAlgorithm} = useArrayData()
+    const { 
+        data, 
+        arrayLength, 
+        sliderHandler, 
+        durationHandler,
+        setSelectedAlgorithm, 
+        executeAlgorithm
+    } = useArrayData()
     
     
     function algorithmChangeHandler(e){
@@ -13,6 +20,8 @@ function Nav() {
         setSelectedAlgorithm(e.target.value)
         console.log(e.target.value)
     }
+
+    
 
     return(
     <div className="nav-container">
@@ -31,6 +40,15 @@ function Nav() {
                 max="150"
                 length={arrayLength}
                 onChange={sliderHandler}
+                ></input>
+            </label>
+            <label>
+                Set the Speed for the Algorithm
+                <input 
+                type='range'
+                min='5'
+                max='200'
+                onChange={durationHandler}
                 ></input>
             </label>
             <button onClick={executeAlgorithm}>Start Visualizer</button>

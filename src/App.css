@@ -1,5 +1,6 @@
 #root {
   margin: auto;
   overflow: hidden;
+  transition: ease all;
 }
 

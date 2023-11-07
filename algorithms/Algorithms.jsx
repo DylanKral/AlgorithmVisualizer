@@ -1,7 +1,7 @@
 import { useArrayData } from "../context/ArrayDataContext";
+[duration] = useArrayData
 
-
-export async function bubbleSort(arr, setData){
+export async function bubbleSort(arr, setData,duration){
   console.log("Bubble Sort Starting")
 
   const sortedArray = [...arr]
@@ -12,7 +12,7 @@ export async function bubbleSort(arr, setData){
       sortedArray[j+1].isExamined = true
 
 
-      await new Promise((resolve) => setTimeout(resolve, 50));
+      await new Promise((resolve) => setTimeout(resolve, duration));
       setData([...sortedArray])
 
       let temp = sortedArray[j]
@@ -25,7 +25,7 @@ export async function bubbleSort(arr, setData){
 
       sortedArray[j].isExamined = false;
       
-      await new Promise((resolve) => setTimeout(resolve,50))
+      await new Promise((resolve) => setTimeout(resolve,duration))
       setData([...sortedArray])
      
     } 
@@ -35,21 +35,24 @@ export async function bubbleSort(arr, setData){
   for (let i = 0; i < sortedArray.length; i++){
       sortedArray[i].isExamined = false
 
-      await new Promise((resolve) => setTimeout(resolve, 25))
+      await new Promise((resolve) => setTimeout(resolve, duration))
       setData([...sortedArray])
     }
   return sortedArray
 }
 
 
-export function binarySort(arr) {
+export function binaryInsertionSort(arr) {
     
 }
 
-export async function selectionSort(arr, setData){
+export function insertionSort(arr,setData){
+
+}
+
+export async function selectionSort(arr, setData, duration){
     console.log("Selection Sort Starting")
-    console.log(arr)
-    console.log(arr[1].value)
+    console.log("Duration: ",duration, "ms")
 
     const sortedArray = [...arr]
 
@@ -58,7 +61,7 @@ export async function selectionSort(arr, setData){
         
         sortedArray[i].isExamined = true;
 
-        await new Promise((resolve) => setTimeout(resolve, 100));
+        await new Promise((resolve) => setTimeout(resolve, duration));
         setData([...sortedArray]);
         
         let minIndex = i;  // index of the element with the lowest value
@@ -67,7 +70,7 @@ export async function selectionSort(arr, setData){
 
           sortedArray[j].isExamined = true;
 
-          await new Promise((resolve) => setTimeout(resolve, 100));
+          await new Promise((resolve) => setTimeout(resolve, duration));
           setData([...sortedArray]);
 
           if (sortedArray[j].value > sortedArray[i].value) {
@@ -89,7 +92,7 @@ export async function selectionSort(arr, setData){
           sortedArray[minIndex].value = temp;
         }
         sortedArray[i].isExamined = false
-        await new Promise(resolve => setTimeout(resolve, 100))
+        await new Promise(resolve => setTimeout(resolve, duration))
         setData([...sortedArray])
       }
       return sortedArray

@@ -12,3 +12,10 @@ nav{
     width: 100vw;
     background-color: rgb(99, 99, 99);
 }
+
+#dropdown{
+    margin-right: 1em;
+    border-radius: 2em;
+    padding: .5em;
+    
+}

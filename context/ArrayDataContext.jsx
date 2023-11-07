@@ -10,6 +10,7 @@ export function useArrayData() {
 export function ArrayDataProvider({ children }) {
     const [arrayLength, setArrayLength] = useState(50);
     const [selectedAlgorithm, setSelectedAlgorithm] = useState('selectionSort')
+    const [duration, setDuration] = useState(100)
 
     function executeAlgorithm(){
         
@@ -35,8 +36,21 @@ export function ArrayDataProvider({ children }) {
         setData(generateArray(newValue));
     }
 
+    function durationHandler(e){
+        const newDuration = e.target.value
+        console.log(newDuration)
+        setDuration(newDuration)
+    }
+
     return (
-        <ArrayDataContext.Provider value={{ data, arrayLength, sliderHandler, executeAlgorithm, setSelectedAlgorithm }}>
+        <ArrayDataContext.Provider value={{ 
+            data, 
+            arrayLength, 
+            duration,
+            sliderHandler,
+            durationHandler, 
+            executeAlgorithm, 
+            setSelectedAlgorithm }}>
             {children}
         </ArrayDataContext.Provider>
     );
