@@ -1,7 +1,6 @@
 import { useArrayData } from "../context/ArrayDataContext";
-[duration] = useArrayData
 
-export async function bubbleSort(arr, setData,duration){
+export async function bubbleSort(arr, setData, duration){
   console.log("Bubble Sort Starting")
 
   const sortedArray = [...arr]
@@ -41,13 +40,47 @@ export async function bubbleSort(arr, setData,duration){
   return sortedArray
 }
 
+export async function insertionSort(arr,setData, duration){
+  let i = 0, key, j = 0;
+  let n = arr.length
+  const sortedArray = [...arr]
 
-export function binaryInsertionSort(arr) {
-    
-}
+  for (i = 1; i < n; i++) {
+      sortedArray[i].isExamined = true
 
-export function insertionSort(arr,setData){
+      await new Promise((resolve) => setTimeout(resolve, duration));
+      setData([...sortedArray]);
 
+      key = sortedArray[i].value;
+      j = i - 1;
+
+      // Move elements of arr[0..i-1],
+      // that are greater than key, 
+      // to one position ahead of their
+      // current position
+      while (j >= 0 && sortedArray[j].value > key) {
+        sortedArray[j].isExamined = true
+
+        await new Promise((resolve) => setTimeout(resolve, duration));
+        setData([...sortedArray]);
+
+        sortedArray[j + 1].value = sortedArray[j].value;
+        sortedArray[j].isExamined = false
+
+        await new Promise((resolve) => setTimeout(resolve, duration));
+        setData([...sortedArray]);
+          j = j - 1;
+        
+      }
+      sortedArray[j + 1].value = key;
+      sortedArray[i].isExamined = false
+      await new Promise((resolve) => setTimeout(resolve, duration));
+      setData([...sortedArray]);
+  }
+
+  setData([...sortedArray])
+
+  return sortedArray
 }
 
 export async function selectionSort(arr, setData, duration){
@@ -97,4 +130,41 @@ export async function selectionSort(arr, setData, duration){
       }
       return sortedArray
     
+}
+
+export async function mergeSort(arr, setData, duration) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+
+  const mid = Math.floor(arr.length / 2);
+  const left = await mergeSort(arr.slice(0, mid), setData, duration);
+  const right = await mergeSort(arr.slice(mid), setData, duration);
+
+  return merge(left, right, setData, duration);
+}
+
+async function merge(left, right, setData, duration) {
+  let result = [];
+  let leftIndex = 0;
+  let rightIndex = 0;
+  setData([...result]);
+
+  while (leftIndex < left.length && rightIndex < right.length) {
+    if (left[leftIndex].value < right[rightIndex].value) {
+      result.push(left[leftIndex]);
+      leftIndex++;
+    } else {
+      result.push(right[rightIndex]);
+      rightIndex++;
+    }
+    await new Promise((resolve) => setTimeout(resolve, duration));
+    setData([...result]);
+  }
+
+  // Add remaining elements from left and right arrays
+  const mergedArray = result.concat(left.slice(leftIndex), right.slice(rightIndex));
+  setData([...mergedArray]);
+
+  return mergedArray;
 }

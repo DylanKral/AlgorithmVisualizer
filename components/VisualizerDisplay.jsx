@@ -8,7 +8,7 @@ function VisualizerDisplay({data}) {
             {data.map((item, idx) => (
                 <div key= {idx}
                 className={`bar ${item.isExamined ? 'examined' : ''}`}
-                style={{height: `${item.value}px`}
+                style={{height: `${item.value*1.5}px`}
                 
                 }>
                 </div>

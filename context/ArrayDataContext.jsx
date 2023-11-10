@@ -15,7 +15,7 @@ export function ArrayDataProvider({ children }) {
     function executeAlgorithm(){
         
         if(!selectedAlgorithm){
-            console.log("Not executing, Nothing selected")
+            console.log("Not executing, No algorithm selected")
             return
         }
 
