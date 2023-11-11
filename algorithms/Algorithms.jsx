@@ -1,5 +1,5 @@
 import { useArrayData } from "../context/ArrayDataContext";
-
+//bubble sort algorithm
 export async function bubbleSort(arr, setData, duration){
   console.log("Bubble Sort Starting")
 
@@ -40,6 +40,7 @@ export async function bubbleSort(arr, setData, duration){
   return sortedArray
 }
 
+//insertions sort algorithm
 export async function insertionSort(arr,setData, duration){
   let i = 0, key, j = 0;
   let n = arr.length
@@ -82,7 +83,7 @@ export async function insertionSort(arr,setData, duration){
 
   return sortedArray
 }
-
+//selection Sort algorithm
 export async function selectionSort(arr, setData, duration){
     console.log("Selection Sort Starting")
     console.log("Duration: ",duration, "ms")
@@ -132,6 +133,7 @@ export async function selectionSort(arr, setData, duration){
     
 }
 
+//Merge Sort Algorithm
 export async function mergeSort(arr, setData, duration) {
   if (arr.length <= 1) {
     return arr;
@@ -148,7 +150,7 @@ async function merge(left, right, setData, duration) {
   let result = [];
   let leftIndex = 0;
   let rightIndex = 0;
-  setData([...result]);
+ 
 
   while (leftIndex < left.length && rightIndex < right.length) {
     if (left[leftIndex].value < right[rightIndex].value) {
@@ -158,7 +160,7 @@ async function merge(left, right, setData, duration) {
       result.push(right[rightIndex]);
       rightIndex++;
     }
-    await new Promise((resolve) => setTimeout(resolve, duration));
+    await new Promise((resolve) => setTimeout(resolve, 1));
     setData([...result]);
   }
 
@@ -167,4 +169,49 @@ async function merge(left, right, setData, duration) {
   setData([...mergedArray]);
 
   return mergedArray;
+}
+
+//Quick Sort Algorithm wwiht pivot as the last element in array
+export async function quickSort(arr, setData, duration) {
+  let low = 0
+  let high = arr.length-1
+  
+ await qs(arr,low, high)
+
+  async function qs(arr,low, high){
+    if(low < high){
+      let j = await partition(arr,low,high);
+      await qs(low,j);
+      await qs(j+1,high)
+    }
+  }
+
+  async function partition(arr, low, high){
+    let pivot = arr[low];
+    let i = low;
+    let j = high
+
+    while(i < j){
+      do{
+        i++
+      }while(arr[i].value <= pivot)
+      do{
+        j--;
+      }while(arr[j].value > pivot)
+
+      if (i < j){
+        let temp = arr[i].value;
+        arr[i].value = arr[j].value;
+        arr[j].value = temp;
+      }
+     
+    }
+      let temp = arr[low].value;
+      arr[low].value = arr[j].value;
+      arr[j].value = temp;
+
+      await new Promise((resolve)=> setTimeout(resolve, 1))
+      setData([...arr])
+      return j;
+  }
 }

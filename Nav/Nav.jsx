@@ -28,6 +28,7 @@ function Nav() {
                 <option value="bubbleSort">Bubble Sort</option>
                 <option value="insertionSort">Insertion Sort</option>
                 <option value="mergeSort">Merge Sort</option>
+                <option value="quickSort">Quick Sort</option>
             </select>
             <label>Set the number of elements for the array
                 <input 
