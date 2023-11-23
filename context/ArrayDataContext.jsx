@@ -1,5 +1,12 @@
 import React, { createContext, useState, useContext } from "react";
 import * as algorithms from '../algorithms/Algorithms'
+import { heapSort } from "../algorithms/heapSort";
+import { bubbleSort } from "../algorithms/bubbleSort";
+import { selectionSort } from "../algorithms/selectionSort";
+import { insertionSort } from "../algorithms/insertionSort";
+import { quickSort } from "../algorithms/quickSort";
+import { mergeSort } from "../algorithms/mergeSort";
+import { radixSort } from "../algorithms/radixSort";
 
 const ArrayDataContext = createContext();
 
@@ -13,13 +20,38 @@ export function ArrayDataProvider({ children }) {
     const [duration, setDuration] = useState(100)
 
     function executeAlgorithm(){
-        
+        let sortedData
         if(!selectedAlgorithm){
             console.log("Not executing, No algorithm selected")
             return
         }
 
-        const sortedData = algorithms[selectedAlgorithm](data, setData)
+        switch (selectedAlgorithm){
+            case 'selectionSort':
+                sortedData = selectionSort(data, setData,duration);
+                break;
+            case 'insertionSort':
+                sortedData = insertionSort(data, setData,duration);
+                break;
+            case 'mergeSort':
+                sortedData = mergeSort(data, setData,duration);
+                break;
+            case 'bubbleSort':
+                sortedData = bubbleSort(data, setData,duration);
+                break;
+            case 'heapSort':
+                sortedData = heapSort(data, setData,duration);
+                break;
+            case 'quickSort':
+                sortedData = heapSort(data, setData,duration);
+                break;
+            case 'radixSort':
+                sortedData = radixSort(data, setData,duration);
+                break;
+            
+        }
+
+        //const sortedData = algorithms[selectedAlgorithm](data, setData,duration)
     }
 
     function generateArray(length) {
@@ -38,7 +70,6 @@ export function ArrayDataProvider({ children }) {
 
     function durationHandler(e){
         const newDuration = e.target.value
-        console.log(newDuration)
         setDuration(newDuration)
     }
 

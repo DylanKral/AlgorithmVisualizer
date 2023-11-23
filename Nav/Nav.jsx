@@ -29,6 +29,8 @@ function Nav() {
                 <option value="insertionSort">Insertion Sort</option>
                 <option value="mergeSort">Merge Sort</option>
                 <option value="quickSort">Quick Sort</option>
+                <option value="heapSort">Heap Sort</option>
+                <option value="radixSort">Radix Sort</option>
             </select>
             <label>Set the number of elements for the array
                 <input 
@@ -43,7 +45,7 @@ function Nav() {
                 Set the Speed for the Algorithm
                 <input 
                 type='range'
-                min='5'
+                min='0'
                 max='200'
                 onChange={durationHandler}
                 ></input>

@@ -81,6 +81,21 @@ export async function insertionSort(arr,setData, duration){
 
   setData([...sortedArray])
 
+  for (let i = 0; i < sortedArray.length; i++){
+    sortedArray[i].isExamined = true;
+
+    await new Promise((resolve) => setTimeout(resolve, duration))
+    setData([...sortedArray])
+  }
+  for (let i = 0; i < sortedArray.length; i++){
+    sortedArray[i].isExamined = false;
+
+    await new Promise((resolve) => setTimeout(resolve, duration))
+    setData([...sortedArray])
+  }
+
+
+
   return sortedArray
 }
 //selection Sort algorithm
