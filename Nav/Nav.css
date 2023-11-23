@@ -1,21 +1,43 @@
 nav{
     margin: 1em;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    
 }
 
 .nav-container{
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    background-color: rgb(99, 99, 99);
+    width: 100%;
+    background-color: rgba(99, 99, 99, .50);
 }
 
 #dropdown{
-    margin-right: 1em;
+    margin: 0em 1em 1em 1em;
     border-radius: 2em;
     padding: .5em;
-    
+}
+
+@media(max-width:600px){
+    .nav-container{
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        text-align: center;
+    }
+    nav{
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+       
+    }
+    input{
+        margin:1em;
+    }
+
+    #start{
+margin: 0 1.25em;
+    }
 }

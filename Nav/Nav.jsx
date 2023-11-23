@@ -50,7 +50,7 @@ function Nav() {
                 onChange={durationHandler}
                 ></input>
             </label>
-            <button onClick={executeAlgorithm}>Start Visualizer</button>
+            <button id="start" onClick={executeAlgorithm}>Start Visualizer</button>
         </nav>
     </div>
     )

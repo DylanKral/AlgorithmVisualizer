@@ -9,5 +9,12 @@
     white-space: nowrap;
     max-width: 95vw;
     padding: 0 5px;
+    transition: .5s ease all ;
 }
 
+@media(max-width: 600px){
+    .container{
+        margin-top: 250px;
+        
+    }
+}
