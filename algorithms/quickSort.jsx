@@ -1,5 +1,5 @@
 
-//Quick Sort Algorithm wwiht pivot as the last element in array
+//Quick Sort Algorithm wiht pivot as the last element in array
 export async function quickSort(arr, setData, duration) {
     let low = 0
     let high = arr.length-1
