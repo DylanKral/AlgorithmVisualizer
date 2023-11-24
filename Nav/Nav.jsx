@@ -22,23 +22,24 @@ function Nav() {
     function getArrayMaxLength() {
         const screenWidth = window.innerWidth;
 
-        if( screenWidth < 400) { 
-            return 60;
-        }else if(400 < screenWidth && screenWidth< 500 ){
-            return 70;
-        }
-        else if(500 <= screenWidth && screenWidth< 600){
-            return 90;
-        }
-        else if(600 <= screenWidth && screenWidth< 700){
-            return 110;
-        }
-        else if(700 <= screenWidth && screenWidth< 800){
-            return 130;
-        }
-        else{
-            return 150;
-        }
+        const breakpoints = [
+            { width: 400, maxLength: 60 },
+            { width: 500, maxLength: 70 },
+            { width: 600, maxLength: 90 },
+            { width: 700, maxLength: 110 },
+            { width: 800, maxLength: 130 },
+            { width: 900, maxLength: 150 },
+            { width: 1000, maxLength: 170 },
+            { width: 1100, maxLength: 190 },
+            { width: 1200, maxLength: 210 },
+            { width: 1300, maxLength: 230 },
+            { width: 1400, maxLength: 250 },
+            { width: Infinity, maxLength: 150 }, // default value
+          ];
+        
+          const { maxLength } = breakpoints.find((bp) => screenWidth < bp.width) || breakpoints[breakpoints.length - 1];
+        
+          return maxLength;
     }
 
     const { 

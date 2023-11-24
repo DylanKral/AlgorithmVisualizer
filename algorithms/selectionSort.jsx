@@ -2,7 +2,6 @@
 //selection Sort algorithm
 export async function selectionSort(arr, setData, duration){
     console.log("Selection Sort Starting")
-    console.log("Duration: ",duration, "ms")
 
     const sortedArray = [...arr]
 
