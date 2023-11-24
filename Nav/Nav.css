@@ -2,8 +2,8 @@ nav{
     margin: 1em;
     display: flex;
     align-items: center;
-        text-align: center;
-        justify-content: center;
+    text-align: center;
+    justify-content: center;
 }
 
 .nav-container{
@@ -15,9 +15,13 @@ nav{
 }
 
 #dropdown{
-    margin: 0em 1em 1em 1em;
+    margin: 0 1em;
     border-radius: 2em;
     padding: .5em;
+}
+
+#start{
+    margin: .5em;
 }
 
 @media(max-width:600px){
@@ -41,5 +45,9 @@ nav{
 
     #start{
         margin: .5em 1.25em;
+    }
+
+    #dropdown{
+        margin: 0em 1em .5em 1em;
     }
 }
