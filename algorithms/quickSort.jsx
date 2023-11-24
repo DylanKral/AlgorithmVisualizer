@@ -18,7 +18,7 @@ export async function quickSort(arr, setData, duration) {
           rightArr.push(arr[i]);
         }
       }
-      const sortedLeft = await qs(leftArr);
+    const sortedLeft = await qs(leftArr);
     const sortedRight = await qs(rightArr);
 
     // Combine the results
@@ -31,5 +31,18 @@ export async function quickSort(arr, setData, duration) {
     return sortedArr;
     };
     
-    await qs(arr)
+    arr = await qs(arr)
+
+    for (let i = 0; i < arr.length; i++){
+      arr[i].isExamined = true;
+  
+      await new Promise((resolve) => setTimeout(resolve, .1))
+      setData([...arr])
+    }
+    for (let i = 0; i < arr.length; i++){
+      arr[i].isExamined = false;
+  
+      await new Promise((resolve) => setTimeout(resolve, .1))
+      setData([...arr])
+    }
   }
