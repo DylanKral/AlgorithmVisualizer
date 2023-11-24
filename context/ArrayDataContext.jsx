@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from "react";
+import React, { createContext, useState, useContext } from "react";
 import { heapSort } from "../algorithms/heapSort";
 import { bubbleSort } from "../algorithms/bubbleSort";
 import { selectionSort } from "../algorithms/selectionSort";
@@ -17,33 +17,6 @@ export function ArrayDataProvider({ children }) {
     const [arrayLength, setArrayLength] = useState(50);
     const [selectedAlgorithm, setSelectedAlgorithm] = useState('selectionSort')
     const [duration, setDuration] = useState(100);
-    const [arrayMaxLength, setArrayMaxLength] = useState(getMaxArrayLength())
-
-    useEffect(() => {
-        function handleResize(){
-            setArrayMaxLength(getMaxArrayLength())
-        }
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize)
-        }
-    }, [])
-    
-    function getMaxArrayLength() {
-        const screenWidth = window.innerWidth;
-
-        if (screenWidth < 490) {
-            return 75;
-        }else if (screenWidth < 550) {
-            return 95;
-        } else if (screenWidth < 700) {
-            return 125;
-        } else {
-            return 150;
-        }
-    }
 
     function executeAlgorithm(){
         let sortedData
@@ -83,7 +56,7 @@ export function ArrayDataProvider({ children }) {
     function generateArray(length) {
 
         return Array.from({length}, () =>({value:Math.floor((Math.random() * 250)+5),
-                                            isExamined: false })).slice(0,arrayMaxLength);
+                                            isExamined: false }));
     }
 
     const [data, setData] = useState(generateArray(arrayLength));

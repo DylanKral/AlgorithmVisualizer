@@ -1,7 +1,9 @@
 nav{
     margin: 1em;
     display: flex;
-    
+    align-items: center;
+        text-align: center;
+        justify-content: center;
 }
 
 .nav-container{
@@ -38,6 +40,6 @@ nav{
     }
 
     #start{
-    margin: .5em 1.25em;
+        margin: .5em 1.25em;
     }
 }
