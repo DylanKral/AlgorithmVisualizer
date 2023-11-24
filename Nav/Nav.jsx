@@ -22,8 +22,6 @@ function Nav() {
     function getArrayMaxLength() {
         const screenWidth = window.innerWidth;
 
-        console.log(screenWidth)
-
         if( screenWidth < 400) { 
             return 60;
         }else if(400 < screenWidth && screenWidth< 500 ){

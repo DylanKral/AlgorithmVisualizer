@@ -1,45 +1,35 @@
 
 //Quick Sort Algorithm wiht pivot as the last element in array
 export async function quickSort(arr, setData, duration) {
-    let low = 0
-    let high = arr.length-1
     
-   await qs(arr,low, high)
-  
-    async function qs(arr,low, high){
-      if(low < high){
-        let j = await partition(arr,low,high);
-        await qs(low,j);
-        await qs(j+1,high)
+    const qs = async (arr) => {
+      if (arr.length <= 1) {
+        return arr;
       }
-    }
-  
-    async function partition(arr, low, high){
-      let pivot = arr[low];
-      let i = low;
-      let j = high
-  
-      while(i < j){
-        do{
-          i++
-        }while(arr[i].value <= pivot)
-        do{
-          j--;
-        }while(arr[j].value > pivot)
-  
-        if (i < j){
-          let temp = arr[i].value;
-          arr[i].value = arr[j].value;
-          arr[j].value = temp;
+    
+      let pivot = arr[0];
+      let leftArr = [];
+      let rightArr = [];
+    
+      for (let i = 1; i < arr.length; i++) {
+        if (arr[i].value < pivot.value) {
+          leftArr.push(arr[i]);
+        } else {
+          rightArr.push(arr[i]);
         }
-       
       }
-        let temp = arr[low].value;
-        arr[low].value = arr[j].value;
-        arr[j].value = temp;
-  
-        await new Promise((resolve)=> setTimeout(resolve, 1))
-        setData([...arr])
-        return j;
-    }
+      const sortedLeft = await qs(leftArr);
+    const sortedRight = await qs(rightArr);
+
+    // Combine the results
+    const sortedArr = [...sortedLeft, pivot, ...sortedRight];
+
+    // Update state with the current sorted array
+    await new Promise((resolve) => setTimeout(resolve, duration));
+    setData([...sortedArr]);
+
+    return sortedArr;
+    };
+    
+    await qs(arr)
   }
